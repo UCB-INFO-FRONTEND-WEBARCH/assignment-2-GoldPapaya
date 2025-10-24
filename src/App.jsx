@@ -7,13 +7,23 @@ import TaskItem from "./components/TaskItem";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [text, setText] = useState('');
 
   function handleClick() {
-    setTasks([...tasks, `New Task ${tasks.length + 1}`]);
+    if (text != '') {
+      setTasks([...tasks, text]);
+      setText(''); // remove text in textbox
+    } else {
+      console.log('Empty text entry')
+    }
+  }
+
+  function handleTextChange(e) {
+    setText(e.target.value);
   }
 
   return (
-    <body>
+    <div>
       <section id="header">
         <header class="main-header">
           <img id="menu-icon" src="assets/menu_icon.png" alt="menu_icon" />
@@ -55,7 +65,15 @@ function App() {
 
         <section id="content">
           <h1>Inbox</h1>
-          <button onClick={handleClick}>Click me</button>
+          <form>
+            <input
+              type="text"
+              placeholder="Add a task"
+              value={text}
+              onChange={handleTextChange}
+            />
+          </form>
+          <button onClick={handleClick}>Add task</button>
           <ul class="task-list">
             {tasks.map((task, index) => (
               <li key={index} class="task-item">
@@ -64,33 +82,15 @@ function App() {
                   id={`task-${index}`}
                   class="task-checkbox"
                 />
-                <label for={`task-${index}`} className="class-name">{task}</label>
+                <label for={`task-${index}`} className="class-name">
+                  {task}
+                </label>
               </li>
             ))}
-            <li>
-              <input type="checkbox" />
-              <p>Call Mom</p>
-            </li>
-            <li>
-              <input type="checkbox" />
-              <p>Buy the new issue of Scientific American</p>
-            </li>
-            <li>
-              <input type="checkbox" />
-              <p>Return the textbook to Josie</p>
-            </li>
-            <li>
-              <input type="checkbox" />
-              <p>Buy the new album by Rake</p>
-            </li>
-            <li>
-              <input type="checkbox" />
-              <p>Buy a gift card for Dad</p>
-            </li>
           </ul>
         </section>
       </main>
-    </body>
+    </div>
   );
 }
 
