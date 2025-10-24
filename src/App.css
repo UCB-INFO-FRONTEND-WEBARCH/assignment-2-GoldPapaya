@@ -1,42 +1,142 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* { box-sizing: border-box;}
+
+html {
+    font-size: 14px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: black;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ========== HEADER STYLES ========== */
+.main-header {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100vw;
+    background: #dc4c3e;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.main-header p {
+    color: #ffffff;
+    margin-right: 20px;
 }
 
-.card {
-  padding: 2em;
+.main-header > img {
+    height: 25px;
 }
 
-.read-the-docs {
-  color: #888;
+#textbox {
+    padding-left: 10px;
+}
+
+#search-icon {
+    position: absolute;
+    height: 25px;
+    padding-left: 5px;
+    padding-top: 5px
+}
+
+#textbox > input {
+    height: 30px;
+    width: 200px;
+    background: #e16f65;
+    border: none;
+    padding-left: 30px;
+}
+
+::placeholder {
+    color: #ffffff;
+}
+
+#menu-icon {
+    padding-left: 60px;
+}
+
+#check-icon {
+    margin-left: auto;
+    padding-right: 5px;
+}
+
+/* ========== NAVIGATION STYLES ========== */
+.sidebar {
+  display: flex;
+  flex-direction: column;           
+  justify-content: flex-start;
+  height: 100vh;
+  width: 300px;
+  flex: 0 0 300px;
+  background: #fefbf2;
+}
+
+.nav-list {
+    list-style-type: none;
+}
+
+.nav-list li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.nav-list p {
+    display: inline;
+    font-size: 12px;
+    color: #7e7d79;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+.nav-list img {
+    padding-right: 10px;
+}
+
+
+/* ========== MAIN CONTENT STYLES ========== */
+.main-content {
+    display: flex;
+}
+
+.main-content h1 {
+    font-size: 20px;
+    padding: 20px 0 0 40px;
+}
+
+.task-list {
+    list-style-type: none;
+    width: 100vw;
+    padding: 0 40px;
+}
+
+.task-list p {
+    display: inline;
+    padding-left: 5px;
+}
+
+.task-list li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+li input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    background-color: #ffffff;
+    border: 1px solid #7e7d79;
+    border-radius: 50%;
+    flex: 0 0 15px;
+    /* the next two properties overwrite default checkbox styling */
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* ========== RESPONSIVE STYLES ========== */
+@media (max-width: 480px) {
+    .sidebar {
+        display: none;
+    }
 }
