@@ -1,9 +1,18 @@
-function TaskList(props) {
-    return (
-        <div className="tasklist">
-            <h2>My First Component</h2>
-        </div>
-    )
+import TaskItem from "./TaskItem";
+
+function TaskList({ tasks, onToggle, onDelete }) {
+  return (
+    <ul className="task-list">
+      {tasks.map((task) => (
+        <TaskItem
+          key={task.id}
+          task={task}
+          onToggle={onToggle}
+          onDelete={onDelete}
+        />
+      ))}
+    </ul>
+  );
 }
 
-export default TaskList
+export default TaskList;

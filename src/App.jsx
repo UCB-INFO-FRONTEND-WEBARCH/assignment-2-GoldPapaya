@@ -1,27 +1,36 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import TaskList from "./components/TaskList";
-import TaskItem from "./components/TaskItem";
+import TaskForm from "./components/TaskForm";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [text, setText] = useState('');
+  const startingTasks = [
+    {
+      id: 1,
+      text: 'Starting Task',
+      completed: false,
+    },
+    {
+      id: 2,
+      text: 'Annother Starting Task',
+      completed: true,
+    },
+  ]
 
-  function handleClick() {
-    if (text != '') {
-      setTasks([...tasks, text]);
-      setText(''); // remove text in textbox
-    } else {
-      console.log('Empty text entry')
-    }
+  const [tasks, setTasks] = useState(startingTasks);
+
+  const addTask = (text) => {
+
   }
 
-  function handleTextChange(e) {
-    setText(e.target.value);
+  const toggleTask = () => {
+    
   }
 
+  const deleteTask = () => {
+    
+  }
+  
   return (
     <div>
       <section id="header">
@@ -65,29 +74,16 @@ function App() {
 
         <section id="content">
           <h1>Inbox</h1>
-          <form>
-            <input
-              type="text"
-              placeholder="Add a task"
-              value={text}
-              onChange={handleTextChange}
-            />
-          </form>
-          <button onClick={handleClick}>Add task</button>
-          <ul class="task-list">
-            {tasks.map((task, index) => (
-              <li key={index} class="task-item">
-                <input
-                  type="checkbox"
-                  id={`task-${index}`}
-                  class="task-checkbox"
-                />
-                <label for={`task-${index}`} className="class-name">
-                  {task}
-                </label>
-              </li>
-            ))}
-          </ul>
+          {/*TODO: implement TaskForm, TaskList (and TaskItem) render fine*/}
+          {/*Also the functions calls work but they need to be finished */}
+          <TaskForm
+          onAdd={addTask}
+          />
+          <TaskList
+          tasks={tasks}
+          onToggle={toggleTask}
+          onDelete={deleteTask}
+          />
         </section>
       </main>
     </div>
