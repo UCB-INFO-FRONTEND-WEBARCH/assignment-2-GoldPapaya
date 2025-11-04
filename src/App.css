@@ -47,7 +47,7 @@ body {
     padding-left: 30px;
 }
 
-::placeholder {
+#textbox > input::placeholder {
     color: #ffffff;
 }
 
@@ -97,6 +97,8 @@ body {
 /* ========== MAIN CONTENT STYLES ========== */
 .main-content {
     display: flex;
+    width: 100vw;
+    overflow-x: clip;
 }
 
 .main-content h1 {
@@ -104,10 +106,38 @@ body {
     padding: 20px 0 0 40px;
 }
 
+#filter {
+    margin-left: 40px;
+}
+
+#filter h4 {
+    margin-bottom: 10px;
+}
+
+#filter button {
+    background: transparent;
+    border: 1px solid #7e7d79;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 5px;
+    padding: 4px 10px;
+    min-width: 100px;
+}
+
+#filter button.active {
+    background: #e16f65;
+    color: #ffffff;
+}
+
 .task-list {
     list-style-type: none;
-    width: 100vw;
+    width: 83vw;
     padding: 0 40px;
+}
+
+#add-task-textbox {
+    width: 25vw;
+    margin-left: 40px;
 }
 
 .task-list p {
@@ -122,17 +152,37 @@ body {
     border-bottom: 1px solid #c4c4c4;
 }
 
-li input[type="checkbox"] {
+.task-list button {
+    margin-left: auto;
+}
+
+.task-checkbox {
     width: 15px;
     height: 15px;
     background-color: #ffffff;
     border: 1px solid #7e7d79;
     border-radius: 50%;
     flex: 0 0 15px;
+    cursor: pointer;
     /* the next two properties overwrite default checkbox styling */
     appearance: none;
     -webkit-appearance: none;
 }
+
+.task-checkbox-completed {
+    width: 15px;
+    height: 15px;
+    background-color: #e16f65;
+    border: 1px solid #7e7d79;
+    border-radius: 50%;
+    flex: 0 0 15px;
+    cursor: pointer;
+    /* the next two properties overwrite default checkbox styling */
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+
 
 /* ========== RESPONSIVE STYLES ========== */
 @media (max-width: 480px) {

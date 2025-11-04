@@ -1,11 +1,11 @@
 function TaskItem({ task, onToggle, onDelete }) {
   return (
-    <li className="task-item">
+    <li className={`task-item${task.completed ? "-completed" : ""}`}>
       <input
         type="checkbox"
         id={`task-${task.id}`}
-        className="task-checkbox"
-        checked={!!task.completed}
+        className={`task-checkbox${task.completed ? "-completed" : ""}`}
+        checked={task.completed}
         onChange={() => onToggle(task.id)}
       />
       <label htmlFor={`task-${task.id}`} className="task-label">
