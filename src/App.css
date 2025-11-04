@@ -106,6 +106,10 @@ body {
     padding: 20px 0 0 40px;
 }
 
+.main-content p {
+    padding: 0 0 0 40px;
+}
+
 #filter {
     margin-left: 40px;
 }
@@ -140,6 +144,14 @@ body {
     margin-left: 40px;
 }
 
+#add-task-textbox + button {
+    background: transparent;
+    border: 1px solid #7e7d79;
+    cursor: pointer;
+    margin-left: 5px;
+    padding: 2px 5px;
+}
+
 .task-list p {
     display: inline;
     padding-left: 5px;
@@ -154,6 +166,11 @@ body {
 
 .task-list button {
     margin-left: auto;
+    background: transparent;
+    border: 1px solid #7e7d79;
+    border-radius: 5px;
+    padding: 4px 10px;
+    cursor: pointer;
 }
 
 .task-checkbox {

@@ -3,18 +3,34 @@ import "./App.css";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import TaskFilter from "./components/TaskFilter";
+import TaskCounter from "./components/TaskCounter";
 
 function App() {
   const startingTasks = [
     {
       id: 1,
-      text: "Starting Task",
+      text: "Call Mom",
       completed: false,
     },
     {
       id: 2,
-      text: "Another Starting Task",
-      completed: true,
+      text: "Buy the new issue of Scientific American",
+      completed: false,
+    },
+    {
+      id: 3,
+      text: "Return the textbook to Josie",
+      completed: false,
+    },
+    {
+      id: 4,
+      text: "Buy the new album by Rake",
+      completed: false,
+    },
+    {
+      id: 5,
+      text: "Buy a gift card for Dad",
+      completed: false,
     },
   ];
 
@@ -34,14 +50,18 @@ function App() {
   };
 
   const toggleTask = (id) => {
-    setTasks((prev) => prev.map((task) => (task.id === id ? {...task, completed: !task.completed} : task)));
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
 
   const deleteTask = (id) => {
     setTasks((prev) => {
       const filteredTasks = prev.filter((task) => task.id !== id);
       const adjustedTaskList = filteredTasks.map((task) =>
-        task.id > id ? {...task, id: task.id - 1} : task
+        task.id > id ? { ...task, id: task.id - 1 } : task
       );
       return adjustedTaskList;
     });
@@ -54,6 +74,8 @@ function App() {
     filteredTasks = tasks.filter((task) => task.completed);
   }
 
+  let lengthCompletedTasks = tasks.filter((task) => task.completed).length
+  let lengthAllTasks = tasks.length
   return (
     <div>
       <section id="header">
@@ -68,7 +90,7 @@ function App() {
             <input type="text" placeholder="Quick Find" />
           </form>
           <img id="check-icon" src="assets/check_icon.png" alt="check_icon" />
-          <p>30/5</p>
+          <TaskCounter lengthCompletedTasks={lengthCompletedTasks} lengthAllTasks={lengthAllTasks}/>
         </header>
       </section>
 
@@ -99,7 +121,15 @@ function App() {
           <h1>Inbox</h1>
           <TaskForm onAdd={addTask} />
           <TaskFilter filter={filter} onFilter={setFilter} />
-          <TaskList tasks={filteredTasks} onToggle={toggleTask} onDelete={deleteTask} />
+          {tasks.length === 0 ? (
+            <p>No tasks yet!</p>
+          ) : (
+            <TaskList
+              tasks={filteredTasks}
+              onToggle={toggleTask}
+              onDelete={deleteTask}
+            />
+          )}
         </section>
       </main>
     </div>

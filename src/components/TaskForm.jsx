@@ -23,7 +23,7 @@ function TaskForm({ onAdd }) {
           type="text"
           value={text}
           onChange={handleTextChange}
-          placeholder="Add a task"
+          placeholder="Type in a task here..."
         />
         <button>Add Task</button>
       </form>
